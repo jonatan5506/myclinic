@@ -11,22 +11,22 @@ type Usuario = {
 type AppContextData = {
   usuario: Usuario | undefined;
   logado: boolean;
-  logar: (login:string, senha:string) => Promise<string | null>;
+  logar: (usuario:string, senha:string) => Promise<string | null>;
   deslogar: () => void;
 };
 
-type AppProvider = {
+type AppProviderData = {
     children:ReactNode
 }
 
-const AppContext = createContext({} as AppContextData);
+export const AppContext = createContext({} as AppContextData);
 
-export const AppProvider = ({children}:AppProvider) => {
+export const AppProvider = ({children}:AppProviderData) => {
     const [usuario,setUsuario] = useState<Usuario>();
     const logado = Boolean(usuario);
 
     const logar = async (login:string, senha:string)=>{
-        alert("Chamou a função de logar!");
+        alert(usuario + " + " + senha);
         return null;
     }
 
