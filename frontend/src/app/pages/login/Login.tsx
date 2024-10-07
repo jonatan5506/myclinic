@@ -2,17 +2,21 @@ import { Divider, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { FormEvent, useContext, useState } from "react";
-import { Background, ContainerForm, FormPaper, InputBox } from "./Login.moduleCss";
+import {
+  Background,
+  ContainerForm,
+  FormPaper,
+  InputBox
+} from "./Login.moduleCss";
 import { AppContext } from "../../shared/contexts/AppContext";
-import Alert from '@mui/material/Alert';
-
+import Alert from "@mui/material/Alert";
 
 export const Login = () => {
-  const { logar }  = useContext(AppContext); 
-  const [usuario, setUsuario] = useState('');
-  const [senha, setSenha] = useState('');
-  const [error,setError] = useState(false);
-  const [textError, setTextError] = useState('');
+  const { logar } = useContext(AppContext);
+  const [usuario, setUsuario] = useState("");
+  const [senha, setSenha] = useState("");
+  const [error, setError] = useState(false);
+  const [textError, setTextError] = useState("");
 
   const handleLogar = async (e:FormEvent) => {
     e.preventDefault();
@@ -44,7 +48,7 @@ export const Login = () => {
           />
           {
             <form onSubmit={handleLogar}>
-               <InputBox>
+              <InputBox>
                 {error && <Alert severity="error">{textError}</Alert>}
               </InputBox>
               <InputBox>
