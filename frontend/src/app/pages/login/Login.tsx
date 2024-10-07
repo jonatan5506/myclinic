@@ -1,56 +1,27 @@
-// import { Box, Divider, styled, Typography } from "@mui/material";
-// import Paper from "@mui/material/Paper";
-// import TextField from "@mui/material/TextField";
-// import Button from "@mui/material/Button";
-// import { useState } from "react";
-
-
-// //Mudar depois para um CSS
-// const Background = styled("div")({
-//   display: "flex",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   height: "100vh",
-//   backgroundImage: "url('/Loginmydoctor.jpeg')",
-//   backgroundSize: "cover" //ajuste da imagem na tela
-// });
-
-// const ContainerForm = styled("div")({
-//   display: "flex",
-//   alignItems: "center",
-//   flexDirection: "column"
-// });
-
-// const FormPaper = styled(Paper)({
-//   width: "100%",
-//   maxWidth: "300px",
-//   padding: "40px",
-//   textAlign: "center",
-//   borderRadius: "10px",
-//   //backgroundColor: 'transparent', // Div transparente
-//   opacity: 0.8
-// });
-
-// const InputBox = styled(Box)({
-//   marginBottom: "13px"
-// });
-
 import { Divider, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { FormEvent, useContext, useState } from "react";
 import { Background, ContainerForm, FormPaper, InputBox } from "./Login.moduleCss";
 import { AppContext } from "../../shared/contexts/AppContext";
+import Alert from '@mui/material/Alert';
+
 
 export const Login = () => {
   const { logar }  = useContext(AppContext); 
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
+  const [error,setError] = useState(false);
+  const [textError, setTextError] = useState('');
 
   const handleLogar = async (e:FormEvent) => {
     e.preventDefault();
-    await logar(usuario,senha);
-    alert("Usuário logado!");
+    const response = await logar(usuario,senha);
+
+    if (response) {
+      setTextError(response);
+      setError(true);
+    }
   };
 
   return (
@@ -73,6 +44,9 @@ export const Login = () => {
           />
           {
             <form onSubmit={handleLogar}>
+               <InputBox>
+                {error && <Alert severity="error">{textError}</Alert>}
+              </InputBox>
               <InputBox>
                 <TextField
                   label="Usuario"

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Dashboard, Login } from "../pages";
+import { Dashboard, Login, Agendamento, Faturamento, Pep, Cadastro } from "../pages";
 
 export const Router = createBrowserRouter([
   {
@@ -8,6 +8,24 @@ export const Router = createBrowserRouter([
   },
   {
     path: "/Dashboard",
-    element: <Dashboard />
+    element: <Dashboard />,
+    children: [
+      {
+        path: "Agendamento",
+        element: <Agendamento />,
+      },
+      {
+        path: "Faturamento",
+        element: <Faturamento />,
+      },
+      {
+        path: "Pep",
+        element: <Pep />,
+      },
+      {
+        path: "Cadastro",
+        element: <Cadastro />,
+      }
+    ],
   }
 ]);
