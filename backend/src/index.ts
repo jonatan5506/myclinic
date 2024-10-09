@@ -9,12 +9,12 @@ app.get('/', (req: Request,res: Response) => {
 //ROTAS
 import router from "./routes/index";
 
-// Configuração do CORS
+//Configuração do CORS
 import cors from "cors";
 const corsOptions = {
-    origin: ['*'], // substitua pelo seu link do ngrok
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // adicione outros métodos se necessário
-    allowedHeaders: ['Content-Type'], // adicione outros cabeçalhos se necessário
+    origin: '*', // URL do seu frontend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'], // Inclua outros cabeçalhos se necessário
 };
 
 app.use(cors(corsOptions));

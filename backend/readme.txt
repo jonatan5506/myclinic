@@ -13,3 +13,14 @@ criar banco no Docker
  - comando para criar a migration no prisma: npx prisma migrate dev
 9º Seeds são para criar usuários padrão
 10º Melhorar Seeds são para criar usuários padrão
+
+
+//ERROS
+1º Futuramente configurar cors pois fora do localhost retorna o erro:
+Uncaught runtime errors:
+×
+ERROR
+Cannot read properties of undefined (reading 'data')
+TypeError: Cannot read properties of undefined (reading 'data')
+    at logar (http://localhost:3000/static/js/bundle.js:1904:29)
+    at async handleLogar (http://localhost:3000/static/js/bundle.js:1400:22)
