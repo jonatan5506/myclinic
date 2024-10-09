@@ -12,3 +12,4 @@ criar banco no Docker
 8º url com allowPublicKeyRetrieval  = mysql://root:admin@localhost:3306/myclinic?allowPublicKeyRetrieval=true&useSSL=false
  - comando para criar a migration no prisma: npx prisma migrate dev
 9º Seeds são para criar usuários padrão
+10º Melhorar Seeds são para criar usuários padrão
